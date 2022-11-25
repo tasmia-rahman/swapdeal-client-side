@@ -1,0 +1,21 @@
+.logo {
+    width: 70px;
+}
+
+.header-links a:hover {
+    color: rgb(190 18 60);
+}
+
+.theme-btn {
+    padding: 5px 12px;
+    border-radius: 10px;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}
+
+.red-color {
+    color: rgb(190 18 60);
+}
