@@ -30,24 +30,8 @@ const Login = () => {
                     email: user.email
                 }
                 console.log(currentUser);
-
-                // get jwt token
-                fetch('https://visapress-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem('visapressDB-token', data.token);
-                        form.reset();
-                        setLoading(false);
-                        navigate(from, { replace: true });
-                    });
-
+                form.reset();
+                setLoading(false);
             })
             .catch(error => console.log(error))
             .finally(() => {
@@ -65,22 +49,7 @@ const Login = () => {
                     email: user.email
                 }
                 console.log(currentUser);
-
-                // get jwt token
-                fetch('https://visapress-server.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem('visapressDB-token', data.token);
-                        setLoading(false);
-                        navigate(from, { replace: true });
-                    });
+                setLoading(false);
             })
             .catch(error => setError(error.message))
     }

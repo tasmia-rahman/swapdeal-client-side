@@ -1,6 +1,6 @@
-.footer {
+.footer-div {
     padding: 50px 0;
-    background-color: black;
+    background-color: #636363;
     color: white;
 }
 
@@ -9,13 +9,13 @@
 }
 
 .footer-links a:hover {
-    color: rgb(190 18 60);
+    color: #53BF9D;
 }
 
 @media only screen and (max-width: 768px) {
     .footer-links {
         display: flex;
         flex-direction: column;
-        /* text-align: center; */
+        text-align: center;
     }
 }

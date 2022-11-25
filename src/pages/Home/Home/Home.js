@@ -3,9 +3,7 @@ import Container from 'react-bootstrap/Container';
 import './Home.css';
 import Banner from '../Banner/Banner';
 import About from '../About/About';
-import HomeServices from '../HomeServices/HomeServices';
 import { Helmet } from 'react-helmet-async';
-import Assessment from '../Assessment/Assessment';
 
 const Home = () => {
     return (
@@ -15,8 +13,6 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <About></About>
-            <Assessment></Assessment>
-            <HomeServices></HomeServices>
         </Container>
     );
 };
