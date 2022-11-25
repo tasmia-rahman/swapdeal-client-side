@@ -11,12 +11,12 @@
 
 .about-icons {
     font-size: 40px;
-    color: rgb(190 18 60);
+    color: #53BF9D;
     margin: 0 auto;
 }
 
 .btn-primary {
-    background-color: rgb(190 18 60) !important;
+    background-color: #53BF9D !important;
     border: none !important;
 }
 

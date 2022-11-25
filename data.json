@@ -1,0 +1,100 @@
+[
+    {
+        "_id": 1,
+        "name": "ASUS",
+        "image": "https://static-01.daraz.com.bd/p/d96554a79a94b968c381768d5f9f49ce.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "MSI",
+        "image": "https://static-01.daraz.com.bd/p/55c84c4f2abe6d24dd087f892cb7f45b.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Lenovo",
+        "image": "https://static-01.daraz.com.bd/p/c725fb5d7ddb3fa329938debf9c0ff90.jpg"
+    }
+]
+
+
+
+[
+    {
+        "image": "https://static-01.daraz.com.bd/p/17ace5bf0f21009651c324c6ada1e4d8.jpg",
+        "name": "ASUS Expertbook",
+        "category": "ASUS",
+        "condition": "Good",
+        "resale_price": "500",
+        "original_price": "700",
+        "years_of_use": "2",
+        "phone_number": "016783456",
+        "location": "Mirpur",
+        "description": "Asus Touch Display Laptop ExpertBook B3 Flip B3402FEA Intel Core i5 1135G7 8GB Ram 512GB SSD 14 Inch FHD LED Star Black Laptop With 03 Year Asus Official Warranty (Battery & Adapter 1 Year) ",
+        "sale_status": "available"
+    },
+    {
+        "image": "https://static-01.daraz.com.bd/p/e63f3de8059463de1f247d309b7fa1c4.jpg",
+        "name": "ASUS Vivobook",
+        "category": "ASUS",
+        "condition": "Excellent",
+        "resale_price": "1000",
+        "original_price": "1300",
+        "years_of_use": "1",
+        "phone_number": "016783456",
+        "location": "Dhanmondi",
+        "description": "ASUS VivoBook 15 X515EA 11th Gen Core-i3 Laptop - 4GB RAM - 512GB SSD - Intel UHD Graphics - Slate Grey #X515EA-BQ2225W",
+        "sale_status": "available"
+    },
+    {
+        "image": "https://static-01.daraz.com.bd/p/aeb93e57c32c3924487e880a9931d103.png",
+        "name": "MSI Modern",
+        "category": "MSI",
+        "condition": "Good",
+        "resale_price": "600",
+        "original_price": "800",
+        "years_of_use": "3",
+        "phone_number": "016783456",
+        "location": "Mohakhali",
+        "description": "MSI MODERN 15 A5M AMD RYZEN 5500U 8GB RAM, 512GB SSD - Laptop",
+        "sale_status": "available"
+    },
+    {
+        "image": "https://static-01.daraz.com.bd/p/55c84c4f2abe6d24dd087f892cb7f45b.jpg",
+        "name": "MSI Prestige",
+        "category": "MSI",
+        "condition": "Fair",
+        "resale_price": "500",
+        "original_price": "700",
+        "years_of_use": "5",
+        "phone_number": "016783456",
+        "location": "Baridhara",
+        "description": "MSI Prestige 14 A11SB Core i7 11th Gen MX450 2GB Graphics 14' FHD Laptop",
+        "sale_status": "available"
+    },
+    {
+        "image": "https://static-01.daraz.com.bd/p/66040e9160ba62e5a87f785fff0ff902.jpg",
+        "name": "Lenovo IdeaPad",
+        "category": "Lenovo",
+        "condition": "Good",
+        "resale_price": "700",
+        "original_price": "1100",
+        "years_of_use": "3",
+        "phone_number": "016783456",
+        "location": "Mirpur",
+        "description": "Lenovo IdeaPad Slim 3i 15ITL Intel Core i5 1135G7 8GB Ram 512GB SSD 15.6 Inch FHD Display Arctic Grey Laptop #82H801WKIN-2Y",
+        "sale_status": "available"
+    },
+    {
+        "image": "https://static-01.daraz.com.bd/p/2e5451fca6d8ac7fa7cd0f780ede3ce0.jpg",
+        "name": "Lenovo Legion",
+        "category": "Lenovo",
+        "condition": "Excellent",
+        "resale_price": "1100",
+        "original_price": "1300",
+        "years_of_use": "1",
+        "phone_number": "016783456",
+        "location": "Mirpur",
+        "description": "Lenovo Legion Y740 Core i7 8th Gen RTX 2070 8GB Graphics Gaming Laptop With Genuine Win 10",
+        "sale_status": "available"
+    }
+]

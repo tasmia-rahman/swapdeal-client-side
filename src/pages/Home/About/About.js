@@ -5,8 +5,8 @@ import './About.css';
 
 const About = () => {
     return (
-        <div className='mt-5'>
-            {/* <h3 className='text-center green-color title'>About</h3> */}
+        <div className='my-5'>
+            <h2 className='text-center green-color title'>About</h2>
             <div className='about-container text-center'>
                 <div className='about-div'>
                     <HiCheckCircle className='about-icons mt-5 mb-3'></HiCheckCircle>

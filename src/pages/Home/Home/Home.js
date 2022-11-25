@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import './Home.css';
 import Banner from '../Banner/Banner';
 import About from '../About/About';
+import Categories from '../Categories/Categories/Categories';
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <About></About>
+            <Categories></Categories>
         </Container>
     );
 };
