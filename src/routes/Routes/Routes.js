@@ -5,6 +5,7 @@ import Blog from "../../pages/Blog/Blog/Blog";
 import Error from "../../pages/Error/Error/Error";
 import Register from "../../pages/Login/Register/Register";
 import Login from "../../pages/Login/Login/Login";
+import Products from "../../pages/Products/Products/Products";
 
 export const routes = createBrowserRouter([
     {
@@ -30,7 +31,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
-            }
+            },
+            {
+                path: '/category/:id',
+                element: <Products></Products>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            },
         ]
     },
     {

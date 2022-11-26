@@ -13,6 +13,8 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setError('');
+
         const form = event.target;
         const fullName = form.fullName.value;
         const photoURL = form.photoURL.value;
@@ -52,7 +54,7 @@ const Register = () => {
             <Helmet>
                 <title>Register</title>
             </Helmet>
-            <h3 className='text-center mb-3 red-color title'>Registration</h3>
+            <h3 className='text-center mb-3 green-color title'>Registration</h3>
             <div className='w-5/12 mx-auto'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -78,13 +80,13 @@ const Register = () => {
                         {error}
                     </Form.Text>
                     <div className="d-flex justify-center mb-5">
-                        <Button className="red-color w-1/2" type="submit" style={{ width: '500px' }}>
+                        <Button className="green-color w-1/2" type="submit" style={{ width: '500px' }}>
                             Register
                         </Button>
                     </div>
                 </Form>
             </div>
-            <h3 className='d-block m-3 red-color text-center'>
+            <h3 className='d-block m-3 green-color text-center'>
                 {
                     success ? 'Registered successfully !!!' : ''
                 }

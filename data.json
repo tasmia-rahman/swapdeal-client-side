@@ -1,16 +1,16 @@
 [
     {
-        "_id": 1,
+        "_id": "1",
         "name": "ASUS",
         "image": "https://static-01.daraz.com.bd/p/d96554a79a94b968c381768d5f9f49ce.jpg"
     },
     {
-        "_id": 2,
+        "_id": "2",
         "name": "MSI",
         "image": "https://static-01.daraz.com.bd/p/55c84c4f2abe6d24dd087f892cb7f45b.jpg"
     },
     {
-        "_id": 3,
+        "_id": "3",
         "name": "Lenovo",
         "image": "https://static-01.daraz.com.bd/p/c725fb5d7ddb3fa329938debf9c0ff90.jpg"
     }
@@ -59,7 +59,7 @@
         "sale_status": "available"
     },
     {
-        "image": "https://static-01.daraz.com.bd/p/55c84c4f2abe6d24dd087f892cb7f45b.jpg",
+        "image": "https://static-01.daraz.com.bd/p/fce44c33c1b25a84227f075c06e9d561.jpg",
         "name": "MSI Prestige",
         "category": "MSI",
         "condition": "Fair",

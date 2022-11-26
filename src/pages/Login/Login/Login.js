@@ -19,6 +19,8 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setError('');
+
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -33,7 +35,7 @@ const Login = () => {
                 form.reset();
                 setLoading(false);
             })
-            .catch(error => console.log(error))
+            .catch(error => setError(error.message))
             .finally(() => {
                 setLoading(false);
             })
@@ -54,18 +56,18 @@ const Login = () => {
             .catch(error => setError(error.message))
     }
 
-    if (loading) {
-        return <div className='text-center my-5'>
-            <Spinner animation="border" />
-        </div>
-    }
+    // if (loading) {
+    //     return <div className='text-center my-5'>
+    //         <Spinner animation="border" />
+    //     </div>
+    // }
 
     return (
         <Container>
             <Helmet>
                 <title>Login</title>
             </Helmet>
-            <h3 className='text-center mb-3 red-color title'>Login</h3>
+            <h3 className='text-center mb-3 green-color title'>Login</h3>
             <div className='w-5/12 mx-auto'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,13 +85,13 @@ const Login = () => {
                         {error}
                     </Form.Text>
                     <div className="d-flex justify-center">
-                        <Button className="red-color w-1/2" type="submit" style={{ width: '500px' }}>
+                        <Button className="green-color w-1/2" type="submit" style={{ width: '500px' }}>
                             Login
                         </Button>
                     </div>
                 </Form>
                 <div className="d-flex justify-center mt-3 mb-5">
-                    <Button className="red-color w-1/2" onClick={handleGoogleSignIn} style={{ width: '500px' }} variant="success">
+                    <Button className="green-color w-1/2" onClick={handleGoogleSignIn} style={{ width: '500px' }} variant="success">
                         Google
                     </Button>
                 </div>
