@@ -1,10 +1,16 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Container, Modal } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from '../ProductCard/ProductCard';
 
 const Products = () => {
     const products = useLoaderData();
+
+    // const [show, setShow] = useState(false);
+
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     return (
         <div className='pb-5'>
@@ -15,8 +21,10 @@ const Products = () => {
                         products.map(product => <ProductCard
                             key={product._id}
                             product={product}
+                        // handleShow={handleShow}
                         ></ProductCard>)
                     }
+                    <BookingModal></BookingModal>
                 </div>
             </Container>
         </div>

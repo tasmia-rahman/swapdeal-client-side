@@ -34,6 +34,7 @@ const Header = () => {
                         {
                             user?.uid ?
                                 <>
+                                    <Link to='/dashboard' className='nav-link'>Dashboard</Link>
                                     <Link className='nav-link' onClick={handleLogOut}>Log out</Link>
                                 </>
                                 :

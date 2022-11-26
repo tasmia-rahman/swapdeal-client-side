@@ -6,6 +6,12 @@ import Error from "../../pages/Error/Error/Error";
 import Register from "../../pages/Login/Register/Register";
 import Login from "../../pages/Login/Login/Login";
 import Products from "../../pages/Products/Products/Products";
+import DashboardLayout from "../../layout/DashboardLayout";
+import AllSellers from "../../pages/Dashboard/Admin/AllSellers/AllSellers";
+import AllBuyers from "../../pages/Dashboard/Admin/AllBuyers/AllBuyers";
+import AddProduct from "../../pages/Dashboard/Seller/AddProduct/AddProduct";
+import MyProducts from "../../pages/Dashboard/Seller/MyProducts/MyProducts";
+import MyOrders from "../../pages/Dashboard/Buyer/MyOrders/MyOrders";
 
 export const routes = createBrowserRouter([
     {
@@ -37,6 +43,32 @@ export const routes = createBrowserRouter([
                 element: <Products></Products>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/addproduct',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/myorders',
+                element: <MyOrders></MyOrders>
+            }
         ]
     },
     {
