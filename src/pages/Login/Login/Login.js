@@ -91,7 +91,7 @@ const Login = () => {
                     </div>
                 </Form>
                 <div className="d-flex justify-center mt-3 mb-5">
-                    <Button className="green-color w-1/2" onClick={handleGoogleSignIn} style={{ width: '500px' }} variant="success">
+                    <Button className="w-1/2 text-white" onClick={handleGoogleSignIn} style={{ width: '500px' }} variant="info">
                         Google
                     </Button>
                 </div>
