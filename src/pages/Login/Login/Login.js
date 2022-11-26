@@ -47,13 +47,27 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                const currentUser = {
-                    email: user.email
-                }
-                console.log(currentUser);
+                console.log(user);
                 setLoading(false);
+                saveUser(user.displayName, user.email, 'buyer');
             })
             .catch(error => setError(error.message))
+    }
+
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // setCreatedUserEmail(email);
+            })
+            .catch(err => console.log(err))
     }
 
     // if (loading) {
