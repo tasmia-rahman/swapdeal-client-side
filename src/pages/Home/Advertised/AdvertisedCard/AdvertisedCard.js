@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const ProductCard = ({ product, handleShow, handleProduct }) => {
+const AdvertisedCard = ({ advertisedProduct, handleShow, handleProduct }) => {
+    const { image, name, condition, resale_price, original_price, years_of_use, location, description } = advertisedProduct;
 
-    const { image, name, condition, resale_price, original_price, years_of_use, location, description } = product;
     return (
         <div>
             <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100">
@@ -72,7 +72,7 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                         <p className='mb-1'>Seller: </p>
                         <p className='mb-0'>Posted on: </p>
                     </div>
-                    <Button variant="primary" onClick={() => { handleShow(); handleProduct(product) }}>
+                    <Button variant="primary" onClick={() => { handleShow(); handleProduct(advertisedProduct) }}>
                         Book Now
                     </Button>
                 </div>
@@ -81,4 +81,4 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
     );
 };
 
-export default ProductCard;
+export default AdvertisedCard;
