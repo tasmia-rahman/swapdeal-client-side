@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
+import useUser from '../../../../hooks/useUser';
 
 const AddProduct = () => {
+    const { user } = useContext(AuthContext);
+    const [seller] = useUser(user?.email);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,7 +35,10 @@ const AddProduct = () => {
             phone_number,
             location,
             description,
-            image
+            image,
+            sellerName: seller.name,
+            sellerEmail: seller.email,
+            status: 'available'
         }
 
         fetch('http://localhost:5000/products', {
@@ -42,6 +52,7 @@ const AddProduct = () => {
             .then(result => {
                 console.log(result);
                 toast.success('Product added successfully');
+                navigate('/dashboard/myproducts');
             })
     }
 
