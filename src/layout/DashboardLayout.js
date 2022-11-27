@@ -6,7 +6,7 @@ import Header from '../pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [, isAdmin, isSeller, isBuyer] = useUser(user?.email);
+    const [, , isAdmin, isSeller, isBuyer] = useUser(user?.email);
     return (
         <div>
             <Header></Header>

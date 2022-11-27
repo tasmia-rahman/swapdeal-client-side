@@ -7,7 +7,8 @@ const useUser = email => {
     const [isUserLoading, setIsUserLoading] = useState(true);
 
     const [seller, setSeller] = useState(null);
-    // console.log(seller);
+    const [buyer, setBuyer] = useState(null);
+    console.log('buyer', buyer);
 
     useEffect(() => {
         if (email) {
@@ -19,10 +20,12 @@ const useUser = email => {
                     setIsBuyer(data.isBuyer);
                     setIsUserLoading(false);
                     setSeller(data.sellerInfo);
+                    setBuyer(data.buyerInfo);
+                    console.log(data.buyerInfo);
                 })
         }
     }, [email])
-    return [seller, isAdmin, isSeller, isBuyer, isUserLoading];
+    return [seller, buyer, isAdmin, isSeller, isBuyer, isUserLoading];
 }
 
 export default useUser;
