@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Modal } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from '../ProductCard/ProductCard';

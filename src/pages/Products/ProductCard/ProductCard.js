@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import BookingModal from '../BookingModal/BookingModal';
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const ProductCard = ({ product, handleShow, handleProduct }) => {
 

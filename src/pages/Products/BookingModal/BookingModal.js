@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
