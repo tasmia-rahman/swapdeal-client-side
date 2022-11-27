@@ -12,6 +12,7 @@ import AllBuyers from "../../pages/Dashboard/Admin/AllBuyers/AllBuyers";
 import AddProduct from "../../pages/Dashboard/Seller/AddProduct/AddProduct";
 import MyProducts from "../../pages/Dashboard/Seller/MyProducts/MyProducts";
 import MyOrders from "../../pages/Dashboard/Buyer/MyOrders/MyOrders";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 
 export const routes = createBrowserRouter([
     {
@@ -68,7 +69,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
-            }
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+            },
         ]
     },
     {

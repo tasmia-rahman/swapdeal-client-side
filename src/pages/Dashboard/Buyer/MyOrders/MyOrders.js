@@ -58,7 +58,7 @@ const MyOrders = () => {
                                 <td>{product.price}</td>
                                 <td>
                                     <button onClick={() => handlePay(product._id)} className='btn btn-sm btn-warning'>
-                                        <Link to={`/category/${product._id}`} className='text-white no-underline'>Pay</Link>
+                                        <Link to={`/dashboard/payment/${product._id}`} className='text-white no-underline'>Pay</Link>
                                     </button>
                                 </td>
                             </tr>)
