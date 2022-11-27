@@ -99,7 +99,7 @@ const Register = () => {
                         {error}
                     </Form.Text>
                     <div className="d-flex justify-center mt-4 mb-2">
-                        <Button className="green-color w-1/2" type="submit" style={{ width: '500px' }}>
+                        <Button className="green-color w-full" type="submit">
                             Register
                         </Button>
                     </div>

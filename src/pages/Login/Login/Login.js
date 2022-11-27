@@ -99,13 +99,13 @@ const Login = () => {
                         {error}
                     </Form.Text>
                     <div className="d-flex justify-center">
-                        <Button className="green-color w-1/2" type="submit" style={{ width: '500px' }}>
+                        <Button className="green-color w-full" type="submit">
                             Login
                         </Button>
                     </div>
                 </Form>
                 <div className="d-flex justify-center mt-3 mb-5">
-                    <Button className="w-1/2 text-white" onClick={handleGoogleSignIn} style={{ width: '500px' }} variant="info">
+                    <Button className="w-full text-white" onClick={handleGoogleSignIn} variant="info">
                         Google
                     </Button>
                 </div>

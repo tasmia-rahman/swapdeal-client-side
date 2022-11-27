@@ -1,9 +1,10 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BookingModal from '../BookingModal/BookingModal';
 
-const ProductCard = ({ product, handleShow }) => {
+const ProductCard = ({ product, handleShow, handleProduct }) => {
+
     const { _id, image, name, condition, resale_price, original_price, years_of_use, location, description } = product;
     return (
         <div>
@@ -73,12 +74,9 @@ const ProductCard = ({ product, handleShow }) => {
                         <p className='mb-1'>Seller: </p>
                         <p className='mb-0'>Posted on: </p>
                     </div>
-                    <div className="flex justify-center">
-                        <label htmlFor="booking-modal" className="btn btn-primary btn-sm">Book Now</label>
-                    </div>
-                    {/* <Button variant="primary" onClick={handleShow}>
-                        Launch demo modal
-                    </Button> */}
+                    <Button variant="primary" onClick={() => { handleShow(); handleProduct(product) }}>
+                        Book Now
+                    </Button>
                 </div>
             </div>
         </div>

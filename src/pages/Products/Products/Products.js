@@ -7,10 +7,15 @@ import ProductCard from '../ProductCard/ProductCard';
 const Products = () => {
     const products = useLoaderData();
 
-    // const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
+    const [product, setProduct] = useState({});
+
+    const handleProduct = prod => {
+        setProduct(prod);
+    }
 
     return (
         <div className='pb-5'>
@@ -21,12 +26,13 @@ const Products = () => {
                         products.map(product => <ProductCard
                             key={product._id}
                             product={product}
-                        // handleShow={handleShow}
+                            handleShow={handleShow}
+                            handleProduct={handleProduct}
                         ></ProductCard>)
                     }
-                    <BookingModal></BookingModal>
                 </div>
             </Container>
+            <BookingModal product={product} show={show} handleClose={handleClose}></BookingModal>
         </div>
     );
 };

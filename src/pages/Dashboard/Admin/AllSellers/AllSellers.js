@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { handleDelete } from '../../../../components/UserDelete';
+import { HiCheck } from "react-icons/hi";
 
 const AllSellers = () => {
     const [status, setStatus] = useState('Unverified');
@@ -50,7 +51,14 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td><button onClick={() => handleVerify(seller._id)} className={`btn btn-sm ${status === 'Unverified' ? 'btn-warning' : 'btn-success'}`}>{status}</button></td>
+                                <td className='flex items-center'>
+                                    {
+                                        status === 'Unverified' ? '' : <HiCheck className='text-info mr-1'></HiCheck>
+                                    }
+                                    <button onClick={() => handleVerify(seller._id)} className={`btn btn-sm text-white ${status === 'Unverified' ? 'btn-warning' : 'btn-info'}`}>
+                                        {status}
+                                    </button>
+                                </td>
                                 <td><button onClick={() => handleDelete(seller._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
                             </tr>)
                         }
