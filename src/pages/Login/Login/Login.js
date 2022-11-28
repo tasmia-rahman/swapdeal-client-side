@@ -20,6 +20,9 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();

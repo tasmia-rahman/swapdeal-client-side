@@ -14,6 +14,11 @@ import MyProducts from "../../pages/Dashboard/Seller/MyProducts/MyProducts";
 import MyOrders from "../../pages/Dashboard/Buyer/MyOrders/MyOrders";
 import Payment from "../../pages/Dashboard/Payment/Payment";
 import ReportedItems from "../../pages/Dashboard/Admin/ReportedItems/ReportedItems";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
+import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
 
 export const routes = createBrowserRouter([
     {
@@ -49,37 +54,38 @@ export const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/reporteditems',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/myorders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <Payment></Payment>,
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
-            },
+            }
         ]
     },
     {

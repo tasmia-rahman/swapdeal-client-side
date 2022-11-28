@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useUser from '../../../hooks/useUser';
 import { HiCheckCircle } from "react-icons/hi";
 import toast from 'react-hot-toast';
-import { useQuery } from '@tanstack/react-query';
 
 const ProductCard = ({ product, handleShow, handleProduct }) => {
-    const { _id, image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date, isReported } = product;
+    const { _id, image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date } = product;
 
     const { user } = useContext(AuthContext);
     const [, buyer] = useUser(user?.email);
@@ -25,14 +23,6 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                 }
             })
     }, [sellerEmail])
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/products`)
-    //         .then(res => res.json())
-    //         .then(data => {
-
-    //         })
-    // }, [isReported])
 
     const handleReport = id => {
         fetch(`http://localhost:5000/reportedProducts/${id}`, {

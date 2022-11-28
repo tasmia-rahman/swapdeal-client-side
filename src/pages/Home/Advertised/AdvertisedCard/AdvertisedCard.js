@@ -1,8 +1,38 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { HiCheckCircle } from 'react-icons/hi';
+import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
+import useUser from '../../../../hooks/useUser';
 
 const AdvertisedCard = ({ advertisedProduct, handleShow, handleProduct }) => {
-    const { image, name, condition, resale_price, original_price, years_of_use, location, description } = advertisedProduct;
+    const { _id, image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date } = advertisedProduct;
+
+    const { user } = useContext(AuthContext);
+    const [, buyer] = useUser(user?.email);
+
+    const [isVerified, setIsVerified] = useState(false);
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/sellers/${sellerEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'verified') {
+                    setIsVerified(true);
+                }
+                else {
+                    setIsVerified(false);
+                }
+            })
+    }, [sellerEmail])
+
+    const handleReport = id => {
+        fetch(`http://localhost:5000/reportedProducts/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(result => {
+                toast(`Reported ${name}`);
+            })
+    }
 
     return (
         <div>
@@ -68,13 +98,25 @@ const AdvertisedCard = ({ advertisedProduct, handleShow, handleProduct }) => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <p className='mb-1'>Seller: </p>
-                        <p className='mb-0'>Posted on: </p>
+                    <div className='flex items-center'>
+                        <p className='mb-1'>Seller: {sellerName}</p>
+                        {isVerified && <HiCheckCircle className='text-info'></HiCheckCircle>}
                     </div>
-                    <Button variant="primary" onClick={() => { handleShow(); handleProduct(advertisedProduct) }}>
-                        Book Now
-                    </Button>
+                    <p className='mb-0'>Posted on: {date}</p>
+                    <div className='flex justify-between mt-3'>
+                        {
+                            buyer?.email &&
+                            <button className='btn btn-sm btn-primary' onClick={() => { handleShow(); handleProduct(advertisedProduct) }}>
+                                Book Now
+                            </button>
+                        }
+                        {
+                            buyer?.email &&
+                            <button className='btn btn-sm btn-danger' onClick={() => { handleReport(_id) }}>
+                                Report
+                            </button>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
@@ -15,6 +15,11 @@ const Register = () => {
 
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail);
+
+    const navigate = useNavigate();
+    if (token) {
+        navigate('/');
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
