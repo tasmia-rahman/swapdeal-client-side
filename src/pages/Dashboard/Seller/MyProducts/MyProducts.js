@@ -9,12 +9,16 @@ import { handleProductDelete } from '../../../../components/ProductDelete';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [seller] = useUser(user?.email);
-    // console.log(isSeller, seller.name);
+    console.log('my products', seller);
 
     const { data: products = [], refetch } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', seller?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products/${seller.email}`);
+            const res = await fetch(`http://localhost:5000/products/${seller?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -22,7 +26,10 @@ const MyProducts = () => {
 
     const handleAdvertise = id => {
         fetch(`http://localhost:5000/products/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -75,12 +82,12 @@ const MyProducts = () => {
                                             Advertise
                                         </button>
                                     }
-                                    {
+                                    {/* {
                                         product.isAdvertised &&
                                         <button className='btn btn-sm btn-success'>
                                             Advertised
                                         </button>
-                                    }
+                                    } */}
                                 </td>
                             </tr>)
                         }

@@ -17,7 +17,11 @@ const Advertised = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/advertisedProducts')
+        fetch('http://localhost:5000/advertisedProducts', {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setAdvertisedProducts(data);

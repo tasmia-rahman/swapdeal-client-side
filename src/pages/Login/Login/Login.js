@@ -8,13 +8,17 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
 import { Container, Spinner } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const { login, loading, setLoading, providerLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
+
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
     const navigate = useNavigate();
     const location = useLocation();
-
     const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (event) => {
@@ -28,12 +32,9 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
-                const currentUser = {
-                    email: user.email
-                }
-                console.log(currentUser);
-                form.reset();
+                setLoginUserEmail(email);
                 setLoading(false);
+                form.reset();
             })
             .catch(error => setError(error.message))
             .finally(() => {
@@ -47,8 +48,8 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setLoading(false);
+                setLoginUserEmail(user.email);
                 saveUser(user.displayName, user.email, 'buyer');
             })
             .catch(error => setError(error.message))

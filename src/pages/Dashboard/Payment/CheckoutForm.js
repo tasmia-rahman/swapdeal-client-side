@@ -20,6 +20,7 @@ const CheckoutForm = ({ booking }) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ price }),
         })
@@ -80,6 +81,7 @@ const CheckoutForm = ({ booking }) => {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
             })
@@ -92,7 +94,8 @@ const CheckoutForm = ({ booking }) => {
                         navigate('/dashboard/myorders');
 
                         fetch(`http://localhost:5000/product/${productName}`, {
-                            method: 'PUT'
+                            method: 'PUT',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
                         })
                             .then(res => res.json())
                             .then(data => {

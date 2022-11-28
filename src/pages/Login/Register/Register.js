@@ -6,11 +6,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const { createUser, updateUserInfo, loading, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [role, setRole] = useState('buyer');
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -53,7 +57,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-
+                setCreatedUserEmail(email);
             })
             .catch(err => console.log(err))
     }

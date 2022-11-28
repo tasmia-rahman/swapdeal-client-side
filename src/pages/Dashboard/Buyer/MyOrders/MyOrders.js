@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
@@ -8,24 +8,16 @@ import useUser from '../../../../hooks/useUser';
 const MyOrders = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
     const [, buyer] = useUser(user?.email);
-
-    // const [products, setProducts] = useState([]);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/bookings/${buyer.email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setProducts(data);
-    //             setLoading(false);
-    //         })
-    //         .catch(err => console.error(err))
-    // }, [buyer.email]);
-
+    console.log('my orders', buyer);
 
     const { data: bookings = [], refetch } = useQuery({
-        queryKey: ['bookings'],
+        queryKey: ['bookings', buyer?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings/${buyer.email}`);
+            const res = await fetch(`http://localhost:5000/bookings/${buyer?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             refetch();
             return data;

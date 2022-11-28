@@ -2,7 +2,10 @@ import toast from "react-hot-toast";
 
 export const handleUserDelete = (id, refetch) => {
     fetch(`http://localhost:5000/users/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
     })
         .then(res => res.json())
         .then(data => {
