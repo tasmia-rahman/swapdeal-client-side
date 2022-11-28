@@ -50,7 +50,7 @@ const BookingModal = ({ show, handleClose, product }) => {
         <>
             <Modal show={show} onHide={handleClose} style={{ opacity: 1, visibility: 'visible' }}>
                 <Modal.Header>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Book for <span className='green-color'>{productName}</span></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>

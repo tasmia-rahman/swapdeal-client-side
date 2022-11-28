@@ -1,16 +1,19 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ booking }) => {
+    const navigate = useNavigate();
+
     const [cardError, setCardError] = useState('');
-    const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
 
     const stripe = useStripe();
     const elements = useElements();
-    const { _id, price, userName, email } = booking;
+    const { _id, productName, price, userName, email } = booking;
 
     useEffect(() => {
         fetch("http://localhost:5000/create-payment-intent", {
@@ -48,7 +51,6 @@ const CheckoutForm = ({ booking }) => {
         else {
             setCardError('');
         }
-        setSuccess('');
         setProcessing(true);
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -85,8 +87,16 @@ const CheckoutForm = ({ booking }) => {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
-                        setSuccess('Congrats, your payment completed!');
+                        toast.success('Congrats, your payment completed!');
                         setTransactionId(paymentIntent.id);
+                        navigate('/dashboard/myorders');
+
+                        fetch(`http://localhost:5000/product/${productName}`, {
+                            method: 'PUT'
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                            })
                     }
                 })
         }
@@ -120,12 +130,7 @@ const CheckoutForm = ({ booking }) => {
                     Pay
                 </button>
             </form>
-            <p className="text-red-500">{cardError}</p>
-            {
-                success && <div>
-                    <p className='text-green-500'>{success}</p>
-                </div>
-            }
+            <p className="text-red-500 mt-3">{cardError}</p>
         </>
     );
 };

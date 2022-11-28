@@ -22,18 +22,14 @@ const MyOrders = () => {
     // }, [buyer.email]);
 
 
-    const { data: products = [], refetch } = useQuery({
-        queryKey: ['products'],
+    const { data: bookings = [], refetch } = useQuery({
+        queryKey: ['bookings'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/bookings/${buyer.email}`);
             const data = await res.json();
             return data;
         }
     });
-
-    const handlePay = (id) => {
-
-    }
 
     return (
         <Container className='mx-5'>
@@ -51,15 +47,22 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((product, i) => <tr key={product._id}>
+                            bookings.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
-                                <td>{product.productName}</td>
-                                <td>{product.image}</td>
-                                <td>{product.price}</td>
+                                <td>{booking.productName}</td>
+                                <td>{booking.image}</td>
+                                <td>{booking.price}</td>
                                 <td>
-                                    <button onClick={() => handlePay(product._id)} className='btn btn-sm btn-warning'>
-                                        <Link to={`/dashboard/payment/${product._id}`} className='text-white no-underline'>Pay</Link>
-                                    </button>
+                                    {
+                                        booking.price && !booking.paid && <Link
+                                            to={`/dashboard/payment/${booking._id}`}
+                                        >
+                                            <button className='btn btn-warning btn-sm'>Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        booking.price && booking.paid && <button className='btn btn-success btn-sm'>Paid</button>
+                                    }
                                 </td>
                             </tr>)
                         }
