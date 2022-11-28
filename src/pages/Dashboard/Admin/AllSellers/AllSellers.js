@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { handleDelete } from '../../../../components/UserDelete';
-import { HiCheck } from "react-icons/hi";
+import { handleUserDelete } from '../../../../components/UserDelete';
+import { HiCheckCircle } from "react-icons/hi";
 
 const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
@@ -54,10 +54,14 @@ const AllSellers = () => {
 
                                     }
                                     {
-                                        seller.status && <button className='btn btn-success btn-sm'>Verified</button>
+                                        seller.status &&
+                                        <div className='flex items-center'>
+                                            <HiCheckCircle className='text-info'></HiCheckCircle>
+                                            <button className='btn btn-info btn-sm'>Verified</button>
+                                        </div>
                                     }
                                 </td>
-                                <td><button onClick={() => handleDelete(seller._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
+                                <td><button onClick={() => handleUserDelete(seller._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

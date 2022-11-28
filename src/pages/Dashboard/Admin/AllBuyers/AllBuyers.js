@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { handleDelete } from '../../../../components/UserDelete';
+import { handleUserDelete } from '../../../../components/UserDelete';
 
 const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
@@ -32,7 +32,7 @@ const AllBuyers = () => {
                                 <th>{i + 1}</th>
                                 <td>{buyer.name}</td>
                                 <td>{buyer.email}</td>
-                                <td><button onClick={() => handleDelete(buyer._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
+                                <td><button onClick={() => handleUserDelete(buyer._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

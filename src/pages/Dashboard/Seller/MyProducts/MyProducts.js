@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useUser from '../../../../hooks/useUser';
+import { handleProductDelete } from '../../../../components/ProductDelete';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
@@ -28,20 +29,6 @@ const MyProducts = () => {
                 if (data.modifiedCount > 0) {
                     toast.success('Advertised successfully.');
                     refetch();
-                }
-            })
-
-    }
-
-    const handleProductDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    refetch();
-                    toast('Deleted successfully');
                 }
             })
 
@@ -74,7 +61,7 @@ const MyProducts = () => {
                                     <button className='btn btn-sm btn-secondary'>{product.sale_status}</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleProductDelete(product._id)} className='btn btn-sm btn-danger'>
+                                    <button onClick={() => handleProductDelete(product._id, refetch)} className='btn btn-sm btn-danger'>
                                         Delete
                                     </button>
                                 </td>

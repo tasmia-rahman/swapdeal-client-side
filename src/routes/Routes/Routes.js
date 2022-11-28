@@ -13,6 +13,7 @@ import AddProduct from "../../pages/Dashboard/Seller/AddProduct/AddProduct";
 import MyProducts from "../../pages/Dashboard/Seller/MyProducts/MyProducts";
 import MyOrders from "../../pages/Dashboard/Buyer/MyOrders/MyOrders";
 import Payment from "../../pages/Dashboard/Payment/Payment";
+import ReportedItems from "../../pages/Dashboard/Admin/ReportedItems/ReportedItems";
 
 export const routes = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ export const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <Products></Products>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
-            },
+            }
         ]
     },
     {
@@ -57,6 +58,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/allbuyers',
                 element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/reporteditems',
+                element: <ReportedItems></ReportedItems>
             },
             {
                 path: '/dashboard/addproduct',

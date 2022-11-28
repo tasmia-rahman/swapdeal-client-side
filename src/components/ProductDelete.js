@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 
-export const handleUserDelete = (id, refetch) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+export const handleProductDelete = (id, refetch) => {
+    fetch(`http://localhost:5000/products/${id}`, {
         method: 'DELETE'
     })
         .then(res => res.json())
@@ -11,4 +11,5 @@ export const handleUserDelete = (id, refetch) => {
                 toast('Deleted successfully');
             }
         })
+
 }

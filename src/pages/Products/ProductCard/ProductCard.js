@@ -3,9 +3,11 @@ import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useUser from '../../../hooks/useUser';
 import { HiCheckCircle } from "react-icons/hi";
+import toast from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
 
 const ProductCard = ({ product, handleShow, handleProduct }) => {
-    const { image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date } = product;
+    const { _id, image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date, isReported } = product;
 
     const { user } = useContext(AuthContext);
     const [, buyer] = useUser(user?.email);
@@ -23,6 +25,24 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                 }
             })
     }, [sellerEmail])
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/products`)
+    //         .then(res => res.json())
+    //         .then(data => {
+
+    //         })
+    // }, [isReported])
+
+    const handleReport = id => {
+        fetch(`http://localhost:5000/reportedProducts/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(result => {
+                toast(`Reported ${name}`);
+            })
+    }
 
     return (
         <div>
@@ -90,16 +110,23 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                     </div>
                     <div className='flex items-center'>
                         <p className='mb-1'>Seller: {sellerName}</p>
-                        {isVerified && <HiCheckCircle className='text-blue-600 font-bold'></HiCheckCircle>}
+                        {isVerified && <HiCheckCircle className='text-info'></HiCheckCircle>}
                     </div>
                     <p className='mb-0'>Posted on: {date}</p>
-
-                    {
-                        buyer?.email &&
-                        <Button className='btn btn-sm btn-primary mt-3' onClick={() => { handleShow(); handleProduct(product) }}>
-                            Book Now
-                        </Button>
-                    }
+                    <div className='flex justify-between mt-3'>
+                        {
+                            buyer?.email &&
+                            <button className='btn btn-sm btn-primary' onClick={() => { handleShow(); handleProduct(product) }}>
+                                Book Now
+                            </button>
+                        }
+                        {
+                            buyer?.email &&
+                            <button className='btn btn-sm btn-danger' onClick={() => { handleReport(_id) }}>
+                                Report
+                            </button>
+                        }
+                    </div>
                 </div>
             </div>
         </div >
