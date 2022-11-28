@@ -10,8 +10,6 @@ const MyProducts = () => {
     const [seller] = useUser(user?.email);
     // console.log(isSeller, seller.name);
 
-    // const [advertise, setAdvertise] = useState(false);
-
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -32,16 +30,6 @@ const MyProducts = () => {
                     refetch();
                 }
             })
-
-        // fetch(`http://localhost:5000/products/${id}`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data.acknowledged);
-        //         if (!data.acknowledged) {
-        //             toast.error(data.message);
-        //         }
-        //     })
-        //     .catch(err => console.error(err))
 
     }
 
@@ -82,17 +70,30 @@ const MyProducts = () => {
                                 <td>{product.name}</td>
                                 <td>{product.category}</td>
                                 <td>{product.resale_price}</td>
-                                <td>{product.status}</td>
+                                <td>
+                                    <button className='btn btn-sm btn-secondary'>{product.sale_status}</button>
+                                </td>
                                 <td>
                                     <button onClick={() => handleProductDelete(product._id)} className='btn btn-sm btn-danger'>
                                         Delete
                                     </button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleAdvertise(product._id)} className='btn btn-sm btn-warning'>
-                                        {/* {advertise ? 'Advertised' : 'Not Advertised'} */}
-                                        Advertise
-                                    </button>
+                                    {
+                                        !product.isAdvertised &&
+                                        <button
+                                            disabled={product.sale_status === 'paid'}
+                                            onClick={() => handleAdvertise(product._id)}
+                                            className='btn btn-sm btn-warning'>
+                                            Advertise
+                                        </button>
+                                    }
+                                    {
+                                        product.isAdvertised &&
+                                        <button className='btn btn-sm btn-success'>
+                                            Advertised
+                                        </button>
+                                    }
                                 </td>
                             </tr>)
                         }

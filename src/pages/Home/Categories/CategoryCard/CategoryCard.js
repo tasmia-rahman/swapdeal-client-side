@@ -14,7 +14,7 @@ const CategoryCard = ({ category }) => {
                         <h4 className='green-color'>{name}</h4>
                     </Card.Title>
                     <div className='d-flex justify-end'>
-                        <Button variant="primary">
+                        <Button className='btn btn-sm btn-primary'>
                             <Link to={`/category/${_id}`} className='text-white no-underline'>See All</Link>
                         </Button>
                     </div>

@@ -27,6 +27,7 @@ const MyOrders = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/bookings/${buyer.email}`);
             const data = await res.json();
+            refetch();
             return data;
         }
     });

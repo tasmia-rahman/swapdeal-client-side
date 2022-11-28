@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useUser from '../../../hooks/useUser';
+import { HiCheckCircle } from "react-icons/hi";
 
 const ProductCard = ({ product, handleShow, handleProduct }) => {
+    const { image, name, condition, resale_price, original_price, years_of_use, location, description, sellerName, sellerEmail, date } = product;
 
-    const { image, name, condition, resale_price, original_price, years_of_use, location, description } = product;
+    const { user } = useContext(AuthContext);
+    const [, buyer] = useUser(user?.email);
+
+    const [isVerified, setIsVerified] = useState(false);
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/sellers/${sellerEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'verified') {
+                    setIsVerified(true);
+                }
+                else {
+                    setIsVerified(false);
+                }
+            })
+    }, [sellerEmail])
+
     return (
         <div>
             <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100">
@@ -68,16 +88,21 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <p className='mb-1'>Seller: </p>
-                        <p className='mb-0'>Posted on: </p>
+                    <div className='flex items-center'>
+                        <p className='mb-1'>Seller: {sellerName}</p>
+                        {isVerified && <HiCheckCircle className='text-blue-600 font-bold'></HiCheckCircle>}
                     </div>
-                    <Button variant="primary" onClick={() => { handleShow(); handleProduct(product) }}>
-                        Book Now
-                    </Button>
+                    <p className='mb-0'>Posted on: {date}</p>
+
+                    {
+                        buyer?.email &&
+                        <Button className='btn btn-sm btn-primary mt-3' onClick={() => { handleShow(); handleProduct(product) }}>
+                            Book Now
+                        </Button>
+                    }
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
