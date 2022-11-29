@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from '../ProductCard/ProductCard';
 
 const Products = () => {
     const products = useLoaderData();
+    console.log(products);
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
     const [product, setProduct] = useState({});
-
     const handleProduct = prod => {
         setProduct(prod);
+    }
+
+    const navigation = useNavigation();
+    if (navigation.state === "loading") {
+        return <Loading></Loading>
     }
 
     return (

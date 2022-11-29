@@ -19,6 +19,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
+import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 
 export const routes = createBrowserRouter([
     {
@@ -47,7 +48,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Products></Products>,
+                element: <PrivateRoute><Products></Products></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             }
         ]
@@ -57,6 +58,10 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
             {
                 path: '/dashboard/allsellers',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
@@ -83,7 +88,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+                element: <Payment></Payment>,
                 loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
             }
         ]

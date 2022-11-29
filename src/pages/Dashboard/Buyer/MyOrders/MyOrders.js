@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useUser from '../../../../hooks/useUser';
 
 const MyOrders = () => {
-    const { user, loading, setLoading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [, buyer] = useUser(user?.email);
     console.log('my orders', buyer);
 
-    const { data: bookings = [], refetch } = useQuery({
+    const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', buyer?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/bookings/${buyer?.email}`, {
@@ -19,7 +19,6 @@ const MyOrders = () => {
                 }
             });
             const data = await res.json();
-            refetch();
             return data;
         }
     });

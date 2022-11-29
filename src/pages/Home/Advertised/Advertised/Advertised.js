@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import BookingModal from '../../../Products/BookingModal/BookingModal';
 import AdvertisedCard from '../AdvertisedCard/AdvertisedCard';
 
 const Advertised = () => {
     const [advertisedProducts, setAdvertisedProducts] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
@@ -25,10 +25,16 @@ const Advertised = () => {
             .then(res => res.json())
             .then(data => {
                 setAdvertisedProducts(data);
-                // setLoading(false);
+                setLoading(false);
             })
             .catch(err => console.error(err))
     }, []);
+
+    if (loading) {
+        return <div className='text-center my-5'>
+            <Spinner animation="border" />
+        </div>
+    }
 
     return (
         advertisedProducts.length > 0 ?

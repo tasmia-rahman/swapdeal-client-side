@@ -64,7 +64,7 @@ const AddProduct = () => {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className='font-semibold'>Product Name</Form.Label>
-                        <Form.Control type="text" name="name" placeholder="Product name" />
+                        <Form.Control type="text" name="name" placeholder="Product name" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className='font-semibold'>Category</Form.Label>
@@ -76,7 +76,7 @@ const AddProduct = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className='font-semibold'>Resale Price</Form.Label>
-                        <Form.Control type="text" name="resale_price" placeholder="Resale Price" />
+                        <Form.Control type="text" name="resale_price" placeholder="Resale Price" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className='font-semibold'>Original Price</Form.Label>

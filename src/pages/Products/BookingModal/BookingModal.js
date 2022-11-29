@@ -49,7 +49,7 @@ const BookingModal = ({ show, handleClose, product }) => {
     return (
         <>
             <Modal show={show} onHide={handleClose} style={{ opacity: 1, visibility: 'visible' }}>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>Book for <span className='green-color'>{productName}</span></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

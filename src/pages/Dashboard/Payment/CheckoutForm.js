@@ -91,7 +91,6 @@ const CheckoutForm = ({ booking }) => {
                     if (data.insertedId) {
                         toast.success('Congrats, your payment completed!');
                         setTransactionId(paymentIntent.id);
-                        navigate('/dashboard/myorders');
 
                         fetch(`http://localhost:5000/product/${productName}`, {
                             method: 'PUT',
@@ -99,6 +98,7 @@ const CheckoutForm = ({ booking }) => {
                         })
                             .then(res => res.json())
                             .then(data => {
+                                navigate('/dashboard/myorders');
                             })
                     }
                 })

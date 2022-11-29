@@ -8,8 +8,6 @@ const useUser = email => {
 
     const [seller, setSeller] = useState(null);
     const [buyer, setBuyer] = useState(null);
-    console.log('hook seller', seller);
-    console.log('hook buyer', buyer);
 
     useEffect(() => {
         if (email) {
