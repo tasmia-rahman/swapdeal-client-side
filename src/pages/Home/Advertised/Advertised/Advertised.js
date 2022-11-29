@@ -39,7 +39,7 @@ const Advertised = () => {
     return (
         advertisedProducts.length > 0 ?
             <div className='pb-5'>
-                <h2 className='text-center green-color title mb-4'>Advertised Products</h2>
+                <h2 className='text-center green-color my-5'>Advertised Products</h2>
                 <Container>
                     <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                         {

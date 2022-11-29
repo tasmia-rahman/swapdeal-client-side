@@ -35,7 +35,7 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
     }
 
     return (
-        <div>
+        <>
             <div className="block rounded-lg p-4 shadow-sm shadow-indigo-100">
                 <img
                     alt="Home"
@@ -119,7 +119,7 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                     </div>
                 </div>
             </div>
-        </div >
+        </>
     );
 };
 
