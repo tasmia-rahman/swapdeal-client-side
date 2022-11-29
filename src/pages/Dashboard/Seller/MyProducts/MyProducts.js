@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
@@ -14,7 +14,7 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', seller?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products/${seller?.email}`, {
+            const res = await fetch(`https://swapdeal-server.vercel.app/products/${seller?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -25,7 +25,7 @@ const MyProducts = () => {
     });
 
     const handleAdvertise = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://swapdeal-server.vercel.app/products/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

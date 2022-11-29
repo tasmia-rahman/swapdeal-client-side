@@ -17,7 +17,7 @@ const Advertised = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/advertisedProducts', {
+        fetch('https://swapdeal-server.vercel.app/advertisedProducts', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

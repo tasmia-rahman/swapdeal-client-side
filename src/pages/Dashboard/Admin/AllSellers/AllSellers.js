@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { handleUserDelete } from '../../../../components/UserDelete';
@@ -9,7 +9,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers', {
+            const res = await fetch('https://swapdeal-server.vercel.app/sellers', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -20,7 +20,7 @@ const AllSellers = () => {
     });
 
     const handleVerify = id => {
-        fetch(`http://localhost:5000/sellers/${id}`, {
+        fetch(`https://swapdeal-server.vercel.app/sellers/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

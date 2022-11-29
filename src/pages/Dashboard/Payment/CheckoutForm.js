@@ -16,7 +16,7 @@ const CheckoutForm = ({ booking }) => {
     const { _id, productName, price, userName, email } = booking;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://swapdeal-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const CheckoutForm = ({ booking }) => {
                 transactionId: paymentIntent.id,
                 email
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://swapdeal-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -92,7 +92,7 @@ const CheckoutForm = ({ booking }) => {
                         toast.success('Congrats, your payment completed!');
                         setTransactionId(paymentIntent.id);
 
-                        fetch(`http://localhost:5000/product/${productName}`, {
+                        fetch(`https://swapdeal-server.vercel.app/product/${productName}`, {
                             method: 'PUT',
                             authorization: `bearer ${localStorage.getItem('accessToken')}`
                         })

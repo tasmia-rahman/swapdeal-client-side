@@ -6,12 +6,12 @@ import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import useToken from '../../../hooks/useToken';
 
 const Login = () => {
-    const { login, loading, setLoading, providerLogin } = useContext(AuthContext);
+    const { login, setLoading, providerLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const [loginUserEmail, setLoginUserEmail] = useState('');
@@ -60,7 +60,7 @@ const Login = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://swapdeal-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -12,7 +12,7 @@ const AdvertisedCard = ({ advertisedProduct, handleShow, handleProduct }) => {
 
     const [isVerified, setIsVerified] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/users/sellers/${sellerEmail}`)
+        fetch(`https://swapdeal-server.vercel.app/users/sellers/${sellerEmail}`)
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'verified') {
@@ -25,7 +25,7 @@ const AdvertisedCard = ({ advertisedProduct, handleShow, handleProduct }) => {
     }, [sellerEmail])
 
     const handleReport = id => {
-        fetch(`http://localhost:5000/reportedProducts/${id}`, {
+        fetch(`https://swapdeal-server.vercel.app/reportedProducts/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

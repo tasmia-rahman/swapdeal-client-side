@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 
 export const handleUserDelete = (id, refetch) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://swapdeal-server.vercel.app/users/${id}`, {
         method: 'DELETE',
         headers: {
             authorization: `bearer ${localStorage.getItem('accessToken')}`

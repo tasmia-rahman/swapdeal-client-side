@@ -13,7 +13,7 @@ const MyOrders = () => {
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', buyer?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings/${buyer?.email}`, {
+            const res = await fetch(`https://swapdeal-server.vercel.app/bookings/${buyer?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

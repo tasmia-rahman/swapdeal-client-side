@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 import useToken from '../../../hooks/useToken';
 
 const Register = () => {
-    const { createUser, updateUserInfo, loading, setLoading } = useContext(AuthContext);
+    const { createUser, updateUserInfo, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [role, setRole] = useState('buyer');
 
@@ -53,7 +53,7 @@ const Register = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://swapdeal-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
