@@ -8,5 +8,6 @@
 }
 
 .btn-primary {
-    background-color: #53BF9D;
+    background-color: #53BF9D !important;
+    border: none !important;
 }

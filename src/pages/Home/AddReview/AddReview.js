@@ -37,7 +37,7 @@ const AddReview = () => {
                 </div>
                 <div className="flex flex-col w-full">
                     <textarea rows="3" placeholder="Message..." className="p-4 rounded-md resize-none border" data-gramm="false" wt-ignore-input="true" spellcheck="false" data-ms-editor="true"></textarea>
-                    <button type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 btn-primary">Leave feedback</button>
+                    <button type="button" className="py-4 my-8 font-semibold rounded-md btn-primary">Leave feedback</button>
                 </div>
             </div>
             <div className="flex items-center justify-center">

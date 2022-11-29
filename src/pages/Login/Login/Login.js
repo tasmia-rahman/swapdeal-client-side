@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -20,9 +20,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    if (token) {
-        navigate(from, { replace: true });
-    }
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token])
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
