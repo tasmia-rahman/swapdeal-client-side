@@ -18,7 +18,7 @@ const ReportedItems = () => {
     });
     return (
         <Container className='mx-5'>
-            <h2 className="text-3xl">My Products</h2>
+            <h2 className="text-3xl">Reported Products</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
