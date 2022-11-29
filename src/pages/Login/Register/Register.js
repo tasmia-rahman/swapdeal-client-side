@@ -97,13 +97,13 @@ const Register = () => {
                         <Form.Label className='font-semibold'>Password</Form.Label>
                         <Form.Control type="password" name="password" placeholder="Password" required />
                     </Form.Group>
-                    <div>
-                        <p className='font-semibold'>Choose Account Type:</p>
-                        <select defaultValue={role} onChange={(event) => setRole(event.target.value)} className='border'>
+                    <Form.Group>
+                        <Form.Label className='font-semibold'>Choose account type:</Form.Label>
+                        <Form.Select aria-label="Default select example" defaultValue={role} onChange={(event) => setRole(event.target.value)}>
                             <option value="buyer">Buyer</option>
                             <option value="seller">Seller</option>
-                        </select>
-                    </div>
+                        </Form.Select>
+                    </Form.Group>
                     <Form.Text className='d-block my-3 text-danger'>
                         {error}
                     </Form.Text>

@@ -14,6 +14,7 @@ const Categories = () => {
             .then(data => {
                 setCategories(data.data);
                 setLoading(false);
+                console.log(data.data);
             })
     }, []);
 

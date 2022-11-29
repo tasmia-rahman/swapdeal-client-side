@@ -9,7 +9,6 @@ import { handleProductDelete } from '../../../../components/ProductDelete';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [seller] = useUser(user?.email);
-    console.log('my products', seller);
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', seller?.email],
@@ -82,12 +81,6 @@ const MyProducts = () => {
                                             Advertise
                                         </button>
                                     }
-                                    {/* {
-                                        product.isAdvertised &&
-                                        <button className='btn btn-sm btn-success'>
-                                            Advertised
-                                        </button>
-                                    } */}
                                 </td>
                             </tr>)
                         }

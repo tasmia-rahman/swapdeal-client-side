@@ -4,13 +4,13 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useUser from '../../../../hooks/useUser';
+import Loading from '../../../Shared/Loading/Loading';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const [, buyer] = useUser(user?.email);
-    console.log('my orders', buyer);
 
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', buyer?.email],
         queryFn: async () => {
             const res = await fetch(`https://swapdeal-server.vercel.app/bookings/${buyer?.email}`, {
@@ -22,6 +22,10 @@ const MyOrders = () => {
             return data;
         }
     });
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
         <Container className='mx-5'>
@@ -42,7 +46,13 @@ const MyOrders = () => {
                             bookings.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
                                 <td>{booking.productName}</td>
-                                <td>{booking.image}</td>
+                                <td>
+                                    <div className="avatar">
+                                        <div className="w-24 rounded">
+                                            <img src={booking.image} alt='' />
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{booking.price}</td>
                                 <td>
                                     {
