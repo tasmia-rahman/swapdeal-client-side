@@ -3,19 +3,18 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 import CategoryCard from '../CategoryCard/CategoryCard';
+import axios from 'axios';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://swapdeal-server.vercel.app/categories')
-            .then(res => res.json())
+        axios.get('https://swapdeal-server.vercel.app/categories')
             .then(data => {
-                setCategories(data);
+                setCategories(data.data);
                 setLoading(false);
             })
-            .catch(err => console.error(err))
     }, []);
 
     if (loading) {
