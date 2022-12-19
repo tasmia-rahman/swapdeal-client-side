@@ -62,10 +62,7 @@ const AllSellers = () => {
                                     }
                                     {
                                         seller.status &&
-                                        <div className='flex items-center'>
-                                            <HiCheckCircle className='text-info'></HiCheckCircle>
-                                            <button className='btn btn-info btn-sm'>Verified</button>
-                                        </div>
+                                        <button className='btn btn-info btn-sm'>Verified</button>
                                     }
                                 </td>
                                 <td><button onClick={() => handleUserDelete(seller._id, refetch)} className='btn btn-sm btn-danger'>Delete</button></td>
