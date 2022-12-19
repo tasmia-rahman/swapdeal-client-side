@@ -100,7 +100,7 @@ const ProductCard = ({ product, handleShow, handleProduct }) => {
                     </div>
                     <div className='flex items-center'>
                         <p className='mb-1'>Seller: {sellerName}</p>
-                        {isVerified && <HiCheckCircle className='text-info'></HiCheckCircle>}
+                        {isVerified && <HiCheckCircle className='text-blue-500 ml-1'></HiCheckCircle>}
                     </div>
                     <p className='mb-0'>Posted on: {date}</p>
                     <div className='flex justify-between mt-3'>
