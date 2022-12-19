@@ -21,12 +21,9 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    useEffect(() => {
-        if (token) {
-            navigate(from, { replace: true });
-        }
-    }, [token])
-
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();

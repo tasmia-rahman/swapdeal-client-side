@@ -7,7 +7,6 @@ import useUser from '../../hooks/useUser';
 const SellerRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const [, , , isSeller, , isUserLoading] = useUser(user?.email);
-    const location = useLocation();
 
     if (loading || isUserLoading) {
         return <div className='text-center my-5'>

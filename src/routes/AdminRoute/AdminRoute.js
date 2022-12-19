@@ -7,7 +7,6 @@ import useUser from '../../hooks/useUser';
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const [, , isAdmin, , , isUserLoading] = useUser(user?.email);
-    const location = useLocation();
 
     if (loading || isUserLoading) {
         return <div className='text-center my-5'>
