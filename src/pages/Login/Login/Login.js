@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -36,6 +36,7 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
+                console.log(user);
                 setLoginUserEmail(email);
                 setLoading(false);
                 form.reset();
