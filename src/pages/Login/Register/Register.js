@@ -13,7 +13,7 @@ const Register = () => {
     const [error, setError] = useState('');
     const [role, setRole] = useState('buyer');
 
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
 
     const navigate = useNavigate();

@@ -22,7 +22,8 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     if (token) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        navigate('/');
     }
 
     const handleSubmit = (event) => {
@@ -37,7 +38,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(email);
+                setLoginUserEmail(user.email);
                 setLoading(false);
                 form.reset();
             })
